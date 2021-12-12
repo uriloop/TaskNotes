@@ -18,23 +18,25 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="140dp"
         android:layout_marginTop="2dp"
         android:textSize="18sp"
-        android:maxHeight="110dp"/>
+        android:maxHeight="140dp"/>
+
 
     <RatingBar
         android:id="@+id/ratingbar"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
         android:paddingTop="4dp"
-        android:layout_marginEnd="-18dp"
+        android:layout_marginEnd="-19dp"
         android:layout_marginStart="-18dp"
         android:progressTint="@color/teal_700"
         android:scaleX="0.7"
         android:scaleY="0.7"
+        android:layout_gravity="center_horizontal"
 
         />
 
