@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_graph"
+    app:startDestination="@id/tabFragment">
+
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.example.myapplication2000.TabFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_tab" >
+        <action
+            android:id="@+id/action_mostrarNotaFragment"
+            app:destination="@id/mostrarNotaFragment" />
+        <action
+            android:id="@+id/action_nuevaNotaFragment"
+            app:destination="@id/nuevaNotaFragment" />
+        <action
+            android:id="@+id/action_nuevaTascaFragment"
+            app:destination="@id/nuevaTascaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevaNotaFragment"
+        android:name="com.example.myapplication2000.NuevaNotaFragment"
+        android:label="fragment_nuevo_elementok"
+        tools:layout="@layout/fragment_nueva_nota" />
+
+    <fragment
+        android:id="@+id/mostrarNotaFragment"
+        android:name="com.example.myapplication2000.MostrarNotaFragment"
+        android:label="fragment_mostrar_nota"
+        tools:layout="@layout/fragment_mostrar_nota" />
+    <fragment
+        android:id="@+id/nuevaTascaFragment"
+        android:name="com.example.myapplication2000.NuevaTascaFragment"
+        android:label="fragment_nueva_tasca"
+        tools:layout="@layout/fragment_nueva_tasca" >
+
+    </fragment>
+
+</navigation>
