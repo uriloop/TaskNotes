@@ -33,7 +33,7 @@ public class TasquesViewModel extends AndroidViewModel {
     }
 
     void actualizar(Tasca tasca, boolean b){
-        tasca.check=!tasca.check;
+        tasca.check=b;
         tasquesRepositorio.actualizar(tasca);
     }
 

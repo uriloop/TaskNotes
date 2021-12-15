@@ -117,12 +117,13 @@ public class TasquesFragment extends Fragment {
             Tasca tasca = tasques.get(position);
 
 
+
             holder.binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                     tasquesViewModel.actualizar(tasca,b);
-                    holder.binding.checkBox.setChecked(tasca.check);
+
                 }
             });
 
@@ -130,6 +131,7 @@ public class TasquesFragment extends Fragment {
 
 
             holder.binding.tasca.setText(tasca.tasca);
+            holder.binding.checkBox.setChecked(tasca.check);
 
         }
 
