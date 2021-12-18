@@ -37,10 +37,27 @@ public class NuevaNotaFragment extends Fragment {
                 String titol = binding.titol.getText().toString();
                 String text = binding.text.getText().toString();
 
-                notasViewModel.insertar(new Nota(titol, text));
+                if (titol.length()<1) noGuardar(1); //mostrar error;
+                else if (text.length()<1) noGuardar(2);//mostrar error;
+                else{
 
-                navController.popBackStack();
+
+                    notasViewModel.insertar(new Nota(titol, text));
+                    navController.popBackStack();
+                }
+
+
             }
         });
+    }
+    public void noGuardar(int i){
+        if (i==1){
+            binding.titol.setHint("Camp requerit!");
+
+        }else if (i==2){
+            binding.text.setHint("Camp requerit!");
+
+
+        }
     }
 }

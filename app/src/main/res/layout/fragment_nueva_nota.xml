@@ -34,7 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Títol"
-                android:textSize="20sp"/>
+                android:textSize="20sp">
+            </EditText>
 
             <EditText
                 android:id="@+id/text"
@@ -42,7 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Text nota"
-
                 android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
@@ -23,6 +24,7 @@ import android.widget.RatingBar;
 
 import com.example.myapplication2000.databinding.FragmentNotesBinding;
 import com.example.myapplication2000.databinding.ViewholderNotaBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -34,19 +36,14 @@ public class NotesFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
         return (binding = FragmentNotesBinding.inflate(inflater, container, false)).getRoot();
 
-
     }
-
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 
         notasViewModel = new ViewModelProvider(requireActivity()).get(NotasViewModel.class);
@@ -60,26 +57,40 @@ public class NotesFragment extends Fragment {
             }
         });
 
+
+
         NotasAdapter notasAdapter;
         notasAdapter = new NotasAdapter();
 
-        binding.recyclerView.setAdapter(notasAdapter);
+
 
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
-                ItemTouchHelper.UP | ItemTouchHelper.DOWN,
-                ItemTouchHelper.RIGHT  | ItemTouchHelper.LEFT) {
+                0,
+                ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
 
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
                 return true;
             }
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int posicion = viewHolder.getAdapterPosition();
+
+
+
                 Nota nota = notasAdapter.obtenerNota(posicion);
                 notasViewModel.eliminar(nota);
+                Snackbar.make(view, nota.titol+" eliminada.", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        notasViewModel.insertar(nota);
+                    }
+
+                }).show();
+
 
             }
         }).attachToRecyclerView(binding.recyclerView);
@@ -90,10 +101,20 @@ public class NotesFragment extends Fragment {
                 notasAdapter.establecerLista(notas);
             }
         });
+
+
         binding.recyclerView.setAdapter(notasAdapter);
+
+        notasViewModel.establecerTerminoBusqueda("");
+
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+
             @Override
-            public boolean onQueryTextSubmit(String query) { return false; }
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -105,13 +126,14 @@ public class NotesFragment extends Fragment {
     }
     //////////   activar aixó
 
-    LiveData<List<Nota>> obtenerNotas(){
+    LiveData<List<Nota>> obtenerNotas() {
         return notasViewModel.buscar();
     }
 
     class NotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
 
         List<Nota> notas;
+
 
         @NonNull
         @Override
@@ -131,7 +153,7 @@ public class NotesFragment extends Fragment {
             holder.binding.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                 @Override
                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                    if(fromUser) {
+                    if (fromUser) {
                         notasViewModel.actualizar(nota, rating);
                     }
                 }
@@ -151,14 +173,18 @@ public class NotesFragment extends Fragment {
             return notas != null ? notas.size() : 0;
         }
 
-        public void establecerLista(List<Nota> notas){
+        public void establecerLista(List<Nota> notas) {
             this.notas = notas;
             notifyDataSetChanged();
         }
 
-        public Nota obtenerNota(int posicion){
+        public Nota obtenerNota(int posicion) {
             return notas.get(posicion);
         }
+
+       /* public void setPosicion(int fromPos, int toPos) {
+
+        }*/
     }
 
     static class NotaViewHolder extends RecyclerView.ViewHolder {

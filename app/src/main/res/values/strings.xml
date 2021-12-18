@@ -2,4 +2,6 @@
     <string name="app_name">My Application2000</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_label">Eliminat</string>
+    <string name="action_text">Undo</string>
 </resources>

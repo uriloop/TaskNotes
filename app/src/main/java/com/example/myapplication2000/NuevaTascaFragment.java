@@ -40,8 +40,12 @@ public class NuevaTascaFragment extends Fragment {
             public void onClick(View view) {
                 String tasca= binding.tasca.getText().toString();
 
-                tasquesViewModel.insertar(new Tasca(tasca,false));
-                navController.popBackStack();
+                if (tasca.length()>0) {
+                    tasquesViewModel.insertar(new Tasca(tasca, false));
+                    navController.popBackStack();
+                }else{
+                    binding.tasca.setHint("Camp requerit!");
+                }
             }
         });
     }

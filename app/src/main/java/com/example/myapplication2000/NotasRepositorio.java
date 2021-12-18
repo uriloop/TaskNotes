@@ -18,19 +18,8 @@ public class NotasRepositorio {
     }
 
 
-
-    /*
-          NO L'UTILITZO PERO EL POSARIA COM INICI O QUE ES FES UNA BUSQUEDA AUTOMATICA AMB VALOR EMPTY PER A QUE ES VEGIN LES NOTES NOMÉS COMENÇAR
-
-            LiveData<List<Nota>> obtener(){
-                return notasDao.obtener();
-            }*/
-
-   /* LiveData<List<com.example.myapplication2000.Nota>> masValorados() {
-        return notasDao.masValorados();
-    }*/
-
     LiveData<List<Nota>> buscar(String d) {
+
         return notasDao.buscar(d);
     }
 

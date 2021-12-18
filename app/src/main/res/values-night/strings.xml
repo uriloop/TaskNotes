@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_label">Undo</string>
+    <string name="action_text">Undo</string>
+</resources>
