@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_rowWeight="0.9"
     android:padding="15dp"
-    android:background="@color/purple_200"
+android:background="@color/purple_700"
     tools:context=".TasquesFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
