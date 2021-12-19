@@ -18,8 +18,9 @@
 
         android:background="@color/teal_200"
         app:backgroundTint="@color/teal_700"
-        app:rippleColor="@color/white"
-        app:srcCompat="@android:drawable/ic_input_add" />
+app:rippleColor="@color/white"
+        app:srcCompat="@drawable/ic_taskicon"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewT"

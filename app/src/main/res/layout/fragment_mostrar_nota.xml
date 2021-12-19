@@ -19,15 +19,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <Button
+                android:id="@+id/desar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desar"
+                android:textSize="20sp"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/teal_700"
 
-            <TextView
+                />
+
+            <EditText
                 android:id="@+id/titol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="38sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

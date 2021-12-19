@@ -51,4 +51,16 @@ public class NotasRepositorio {
             }
         });
     }
+
+    public void actualizarTitol(Nota nota,String titol,String text) {
+        executor.execute(new Runnable() {
+
+            @Override
+            public void run() {
+                nota.text=text;
+                nota.titol=titol;
+                notasDao.actualizar(nota);
+            }
+        });
+    }
 }

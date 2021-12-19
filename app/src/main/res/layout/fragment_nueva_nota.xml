@@ -27,6 +27,7 @@
                 android:text="Desar"
                 android:textSize="20sp"
                 android:layout_gravity="end"
+                android:backgroundTint="@color/teal_700"
 
                 />
             <EditText

@@ -2,6 +2,7 @@ package com.example.myapplication2000;
 
 import android.os.Bundle;
 
+import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -83,13 +84,13 @@ public class NotesFragment extends Fragment {
 
                 Nota nota = notasAdapter.obtenerNota(posicion);
                 notasViewModel.eliminar(nota);
-                Snackbar.make(view, nota.titol+" eliminada.", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
+                Snackbar.make(view, nota.titol.toUpperCase()+" eliminada.", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         notasViewModel.insertar(nota);
                     }
 
-                }).show();
+                }).setBackgroundTint(getResources().getColor(R.color.purple_500,getActivity().getTheme())).setActionTextColor(getResources().getColor(R.color.white,getActivity().getTheme())).setTextColor(getResources().getColor(R.color.white,getActivity().getTheme())).setDuration(2500).show();
 
 
             }
@@ -158,6 +159,9 @@ public class NotesFragment extends Fragment {
                     }
                 }
             });
+
+
+
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

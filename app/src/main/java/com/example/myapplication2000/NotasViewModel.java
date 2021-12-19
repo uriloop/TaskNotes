@@ -60,7 +60,7 @@ public class NotasViewModel extends AndroidViewModel {
         notasRepositorio.eliminar(nota);
     }
 
-    void actualizar(Nota nota, float valoracion){
+    void actualizar(Nota nota,float valoracion){
         notasRepositorio.actualizar(nota, valoracion);
     }
 
@@ -76,5 +76,9 @@ public class NotasViewModel extends AndroidViewModel {
 
     public void establecerTerminoBusqueda(String s){
         terminoBusqueda.setValue(s);
+    }
+
+    public void actualizar(Nota nota,String titol,String text) {
+        notasRepositorio.actualizarTitol(nota,titol,text);
     }
 }

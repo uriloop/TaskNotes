@@ -26,6 +26,7 @@ import com.example.myapplication2000.databinding.FragmentNotesBinding;
 import com.example.myapplication2000.databinding.FragmentTasquesBinding;
 import com.example.myapplication2000.databinding.ViewholderNotaBinding;
 import com.example.myapplication2000.databinding.ViewholderTascaBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class TasquesFragment extends Fragment {
     private FragmentTasquesBinding binding;
     TasquesViewModel tasquesViewModel;
     NavController navController;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class TasquesFragment extends Fragment {
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN,
                 ItemTouchHelper.RIGHT  | ItemTouchHelper.LEFT) {
 
+
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return true;
@@ -78,9 +81,22 @@ public class TasquesFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
                 int posicion = viewHolder.getAdapterPosition();
                 Tasca tasca = tasquesAdapter.obtenerTasca(posicion);
                 tasquesViewModel.eliminar(tasca);
+
+                Snackbar snack = null;
+
+
+                snack.make(view, tasca.tasca+" eliminada.", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tasquesViewModel.insertar(tasca);
+                    }
+
+                }).setBackgroundTint(getResources().getColor(R.color.purple_500,getActivity().getTheme())).setActionTextColor(getResources().getColor(R.color.white,getActivity().getTheme())).setTextColor(getResources().getColor(R.color.white,getActivity().getTheme())).setDuration(2500).show();
+
 
             }
         }).attachToRecyclerView(binding.recyclerViewT);
