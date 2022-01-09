@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
     android:background="@color/nota"
     android:orientation="vertical"
-
+    android:elevation="3dp"
     android:padding="16dp"
     tools:context=".MostrarNotaFragment">
 
@@ -27,7 +27,7 @@
                 android:textSize="20sp"
                 android:layout_gravity="end"
                 android:backgroundTint="@color/teal_700"
-
+android:elevation="3dp"
                 />
 
             <EditText

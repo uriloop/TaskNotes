@@ -17,7 +17,9 @@
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/teal_700"
+        android:shadowColor="@color/black"
         />
+
     <EditText
         android:id="@+id/tasca"
         android:layout_width="match_parent"
